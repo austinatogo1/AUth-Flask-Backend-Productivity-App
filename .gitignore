@@ -7,3 +7,7 @@ venv/
 .env
 .DS_Store
 .pytest_cache/
+cookies*.txt
+austin.txt
+jane.txt
+verify.py

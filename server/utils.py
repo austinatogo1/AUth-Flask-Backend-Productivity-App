@@ -4,13 +4,17 @@ from flask import session
 
 from models import User
 
+from config import db
+
+from models import User
+
 
 def get_current_user():
     """Returns the logged-in User, or None if the session is empty or stale."""
     user_id = session.get("user_id")
     if not user_id:
         return None
-    return User.query.get(user_id)
+    return db.session.get(User, user_id)  # Use db.session.get for better performance and to avoid stale sessions
 
 
 def login_required(func):
