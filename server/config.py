@@ -26,6 +26,13 @@ app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 app.config["SECRET_KEY"] = os.environ.get("SECRET_KEY", "dev-secret-key-change-in-production")
 app.json.compact = False
 
+# Session cookie hardening. HTTPONLY blocks JavaScript from reading the cookie,
+# which limits the damage of an XSS bug in the client.
+app.config["SESSION_COOKIE_HTTPONLY"] = True
+app.config["SESSION_COOKIE_SAMESITE"] = "Lax"
+
+app.json.compact = False  # makes the JSON responses easier to read in the browser
+
 db = SQLAlchemy(metadata=metadata)
 db.init_app(app)
 
@@ -37,5 +44,5 @@ api = Api(app)
 CORS(
     app,
     supports_credentials=True,
-    origins=["http://localhost:3000", "http://localhost:5173"],
+    origins=["http://localhost:3000", "http://localhost:5173", "http://127.0.0.1:5173"],
 )
