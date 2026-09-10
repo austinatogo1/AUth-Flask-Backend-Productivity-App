@@ -11,3 +11,7 @@ cookies*.txt
 austin.txt
 jane.txt
 verify.py
+
+server/rubric_check.py
+cookies*.txt
+verify.py
