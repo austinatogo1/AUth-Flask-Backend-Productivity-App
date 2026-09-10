@@ -1,10 +1,3 @@
-"""Marshmallow schemas.
-
-These are the boundary between the database and the outside world. A field that
-is absent here can never be serialized into a response, which is the second
-layer of protection on the password hash.
-"""
-
 from marshmallow import EXCLUDE, Schema, fields, validate
 
 from models import JournalEntry, User

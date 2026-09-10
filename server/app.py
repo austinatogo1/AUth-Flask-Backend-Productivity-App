@@ -6,7 +6,6 @@ from config import api, app, db
 from resources.auth import CheckSession, Login, Logout, Signup
 from resources.entries import EntryById, EntryList
 
-# Imported for its side effect: registering the models with SQLAlchemy so that
 # Flask-Migrate can see them.
 import models  # noqa: F401
 
